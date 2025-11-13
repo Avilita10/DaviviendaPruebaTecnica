@@ -15,7 +15,6 @@ export default function Tasks() {
   const [desc, setDesc] = useState('')
   const [status, setStatus] = useState('in-progress')
   const [priority, setPriority] = useState('medium')
-  // Avoid TS generic mismatch in some editors/environments by using assertion
   // Evitar desajustes genéricos de TS en algunos editores/entornos usando una aserción
   const [error, setError] = useState(null as string | null)
 
