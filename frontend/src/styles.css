@@ -1,0 +1,31 @@
+body { background: #f8f9fa }
+.container { max-width: 900px }
+
+/* Kanban styles */
+.kanban-column { min-height: 160px; padding: 6px; background: #fafafa; border: 1px dashed #e6e6e6; border-radius: 6px; }
+.kanban-card { background: #fff; cursor: grab; }
+.kanban-card:active { cursor: grabbing; }
+/* Allow card inner layout to wrap so controls (select/button) remain visible on narrow cards */
+.kanban-card > .d-flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.kanban-card .card-body > .d-flex > div:first-child {
+	min-width: 0; /* allow truncation */
+}
+/* Prevent horizontal overflow inside cards and columns */
+.kanban-column { overflow-x: hidden; }
+.kanban-card { overflow: hidden; }
+.kanban-card .card-body { overflow: hidden; }
+.kanban-card .d-flex { flex-wrap: wrap; }
+.kanban-card .d-flex > div:first-child { min-width: 0; }
+.kanban-card .d-flex strong { display: inline-block; max-width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; }
+.kanban-card .badge { white-space: nowrap; max-width: 6.5rem; overflow: hidden; text-overflow: ellipsis; }
+/* Kanban board layout */
+.kanban-board { display: flex; gap: 16px; align-items: flex-start; width: 100%; }
+.kanban-column-wrap { flex: 1 1 0; min-width: 220px; }
+.kanban-column { max-height: 70vh; overflow-y: auto }
+
+/* Make the form and board use more horizontal space */
+.container { max-width: 1200px }
