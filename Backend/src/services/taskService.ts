@@ -11,6 +11,10 @@ export const listTasks = async (userId: number, filters: any) => {
   return await taskRepo.getTasksByUser(userId, filters);
 };
 
+export const listAllTasks = async () => {
+  return await taskRepo.getAllTasks();
+};
+
 export const getTask = async (id: number) => {
   return await taskRepo.getTaskById(id);
 };

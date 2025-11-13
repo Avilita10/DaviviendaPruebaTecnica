@@ -32,6 +32,15 @@ export const getTask = async (req: any, res: any) => {
   }
 };
 
+export const listAllTasks = async (req: any, res: any) => {
+  try {
+    const tasks = await taskService.listAllTasks();
+    res.json(tasks);
+  } catch (err: any) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 export const updateTask = async (req: any, res: any) => {
   try {
   const id = Number(req.params.id);

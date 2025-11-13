@@ -48,6 +48,19 @@ export const getTaskById = async (id: number) => {
   return res.rows[0];
 };
 
+export const getAllTasks = async () => {
+  // Similar to getTasksByUser but returns all tasks, excluding soft-deleted if 'state' exists
+  try {
+    const q = `SELECT * FROM tasks WHERE (state IS NULL OR state <> 0) ORDER BY created_at DESC`;
+    const res = await pool.query(q, []);
+    return res.rows;
+  } catch (err) {
+    const q = `SELECT * FROM tasks ORDER BY created_at DESC`;
+    const res = await pool.query(q, []);
+    return res.rows;
+  }
+};
+
 export const updateTask = async (id: number, patch: Partial<TaskRecord>) => {
   const fields: string[] = [];
   const params: any[] = [];

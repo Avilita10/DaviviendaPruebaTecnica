@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { authRoutes, taskRoutes, userRoutes } from './routes';
+import * as taskController from './controllers/taskController';
 import { ping } from './controllers/healthController';
 
 dotenv.config();
@@ -13,9 +14,9 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/tasks', taskRoutes);
 app.use('/users', userRoutes);
-// Soporta también llamadas bajo el namespace /auth para compatibilidad con clientes
 app.use('/auth/users', userRoutes);
 app.use('/auth/tasks', taskRoutes);
+app.get('/auth/all-tasks', taskController.listAllTasks);
 app.get('/health', ping);
 
 const port = process.env.PORT || 3000;
