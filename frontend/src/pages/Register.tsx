@@ -17,7 +17,7 @@ export default function Register({ onRegister }: any) {
   const submit = async (e: any) => {
     e.preventDefault()
     setError(null)
-    // client-side validation
+    // validación en el lado del cliente
     const errs: string[] = []
     if (!name || name.length < 2) errs.push('name')
     if (!email || !EMAIL_REGEX.test(email)) errs.push('email')
@@ -51,7 +51,7 @@ export default function Register({ onRegister }: any) {
               onChange={e => {
                 const v = e.target.value
                 setName(v)
-                // clear name error when corrected
+                // limpiar el error de nombre cuando se corrige
                 if (v && v.length >= 2) setFormErrors(prev => prev.filter(x => x !== 'name'))
               }}
             />
@@ -76,11 +76,11 @@ export default function Register({ onRegister }: any) {
               type="password"
               className={`form-control ${formErrors.includes('password') ? 'is-invalid' : ''}`}
               value={password}
-              onChange={e => {
+                onChange={e => {
                 const v = e.target.value
                 setPassword(v)
                 if (PASSWORD_REGEX.test(v)) setFormErrors(prev => prev.filter(x => x !== 'password'))
-                // also clear confirm error if they now match
+                // también limpiar el error de confirmación si ahora coinciden
                 if (v === confirm) setFormErrors(prev => prev.filter(x => x !== 'confirm'))
               }}
             />

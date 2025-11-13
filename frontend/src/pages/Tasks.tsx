@@ -16,6 +16,7 @@ export default function Tasks() {
   const [status, setStatus] = useState('in-progress')
   const [priority, setPriority] = useState('medium')
   // Avoid TS generic mismatch in some editors/environments by using assertion
+  // Evitar desajustes genéricos de TS en algunos editores/entornos usando una aserción
   const [error, setError] = useState(null as string | null)
 
   const load = async () => {
@@ -100,7 +101,7 @@ export default function Tasks() {
       </form>
 
   <div className="kanban-board">
-        {/** Kanban columns: Pending, In Progress, Doing, Done, Cancelled */}
+        {/** Columnas Kanban: Pendiente, En Progreso, Doing, Hecho, Cancelado */}
   {['pending', 'in-progress', 'doing', 'done', 'cancelled'].map(col => (
     <div key={col} className="kanban-column-wrap">
             <div className="card mb-3">
