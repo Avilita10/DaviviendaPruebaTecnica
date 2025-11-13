@@ -49,7 +49,6 @@ export const getTaskById = async (id: number) => {
 };
 
 export const getAllTasks = async () => {
-  // Similar to getTasksByUser but returns all tasks, excluding soft-deleted if 'state' exists
   try {
     const q = `SELECT * FROM tasks WHERE (state IS NULL OR state <> 0) ORDER BY created_at DESC`;
     const res = await pool.query(q, []);

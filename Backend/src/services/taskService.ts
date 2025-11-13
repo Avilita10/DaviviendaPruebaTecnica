@@ -20,7 +20,6 @@ export const getTask = async (id: number) => {
 };
 
 export const updateTask = async (id: number, patch: any) => {
-  // Allowable fields only
   const allowed = ['title','description','priority','status'];
   const clean: any = {};
   for (const k of Object.keys(patch)) if (allowed.includes(k)) clean[k] = patch[k];
